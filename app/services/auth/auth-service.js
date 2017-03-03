@@ -26,13 +26,9 @@
         function login(name, password)
         {
             var data = JSON.stringify({name: name, password: password});
-            return $http({url: '/auth/login', method: 'POST', data:  data, transformRequest: function(data, headersGetter, status){
-                console.log('data',data);
-                console.log('header',headersGetter);
-                console.log('status',status);
-                return data;
-            }}).then(function (result)
+            return $http.post('/auth/login', data).then(function (result)
             {
+                console.log('dupa');
                 $cookies.put('token', 'Bearer ' + result.data.token);
                 return result.data;
             })

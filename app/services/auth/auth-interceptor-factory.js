@@ -9,19 +9,20 @@
      * # authInterceptor
      * Factory in the authExerciseApp.
      */
-    function AuthInterceptor($q, $cookies)
+    function AuthInterceptor($q, $cookies, $injector)
     {
         return {
             request: function (config)
             {
 
-
+var AuthService = $injector.get('AuthService');
                 config.headers = config.headers || {};
                 if ($cookies.get('token')) {
                     config.headers.Authorization = 'Bearer ' + $cookies.get('token');
                 }
                 if(Object.keys(config.headers).length === 0){
                    config.headers = false;
+                    AuthService.getToken();
 
                 }
                 return config;
@@ -29,7 +30,6 @@
             {
                 if (rejection.status === 401) {
                     // handle the case where the user is not authenticated
-                    console.log(rejection);
                 }
                 return $q.reject(rejection);
             }
