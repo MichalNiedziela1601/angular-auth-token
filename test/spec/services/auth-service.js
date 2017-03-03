@@ -45,6 +45,7 @@ describe('Service: authService', function () {
   it('should isAuthenticated false if user not authenticated', function () {
     $httpBackend.expectPOST('/auth/login').respond(401, {login: false});
     var promise = AuthService.login('admin', 'admin').catch(function (res) {
+      console.log('res',res);
       expect(res.data.login).toBe(false);
       expect(AuthService.isAuthenticated()).toBe(false);
     });
