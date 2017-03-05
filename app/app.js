@@ -20,4 +20,5 @@ app.config(['$urlRouterProvider', 'growlProvider', '$httpProvider', function ($u
         info: 4000
     });
     growlProvider.globalDisableCountDown(true);
+    $httpProvider.interceptors.push('AuthInterceptor');
 }]);

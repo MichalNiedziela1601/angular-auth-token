@@ -8,7 +8,11 @@
      * # AboutCtrl
      * Controller of the authExerciseApp
      */
-
+    function AboutController()
+    {
+        console.log('About controller!');
+    }
     angular.module('authExerciseApp')
-    
+            .controller('AboutController',[AboutController]);
+
 })();
