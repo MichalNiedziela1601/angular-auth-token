@@ -4,7 +4,7 @@
 
     function config($stateProvider)
     {
-        $stateProvider.state('site.auth',{
+        $stateProvider.state('site.main',{
             abstract: true,
             views: {
                 '@site' : {

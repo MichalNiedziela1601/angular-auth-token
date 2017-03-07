@@ -5,11 +5,11 @@
 
     function config($stateProvider)
     {
-        $stateProvider.state('site.auth.login',{
+        $stateProvider.state('site.main.login',{
             url: '/', views: {
-                '@site.auth': {
-                    templateUrl: '/views/site/auth/main/home/home.html',
-                    controller: 'LoginController as loginCtrl'
+                '@site.main': {
+                    templateUrl: 'views/site/auth/main/home/home.html',
+                    controller: 'HomeController as homeCtrl'
                 }
             }
         });

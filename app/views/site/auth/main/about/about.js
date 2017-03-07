@@ -3,10 +3,10 @@
     'use strict';
 
     function config($stateProvider){
-        $stateProvider.state('site.auth.about', {
+        $stateProvider.state('site.main.about', {
             url: '/about',
             views: {
-                '@site.auth' : {
+                '@site.main' : {
                     templateUrl: 'views/site/auth/main/about/about.html',
                     controller: 'AboutController as aboutCtrl'
                 }

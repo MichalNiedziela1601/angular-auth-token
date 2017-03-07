@@ -8,17 +8,25 @@
      * # MenuCtrl
      * Controller of the authExerciseApp
      */
-    function MenuController(AuthService,User)
+    function MenuController($state,AuthService,User,UserService)
     {
         var ctrl = this;
         console.log('Menu Controller!');
-        ctrl.user = User;
+        // ctrl.username = UserService.getCurrent();
+        // ctrl.user = User;
+        UserService.getCurrent().then(function(result){
+            ctrl.user = result;
+        });
         ctrl.logout = function(){
-            AuthService.logout();
+            AuthService.logout().then(function(){
+                $state.go('site.auth.login', {}, {reload: true});
+            });
+
+
         };
     }
 
-    angular.module('authExerciseApp').controller('MenuController', ['AuthService', 'User', MenuController]);
+    angular.module('authExerciseApp').controller('MenuController', ['$state','AuthService', 'User','UserService', MenuController]);
 
 })();
 
